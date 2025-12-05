@@ -2,6 +2,7 @@
 
 > **Instituição:** UTFPR - Universidade Tecnológica Federal do Paraná
 > **Disciplina:** Programação Web Front-End
+> **Aluno:** Eduardo da Silva Mendes Carlos - 2432994
 > **Tecnologias:** HTML5, CSS3, JavaScript (Vanilla)
 > **Tema:** Pequeno Comércio Local / Gestão de Restaurante
 
@@ -74,10 +75,6 @@ O projeto é estático (Front-End puro), não necessitando de instalação de de
     * Navegue até o menu "Admin".
     * Cadastre um usuário e recarregue a página para testar o LocalStorage.
 
----
-
-## 5. Equipe e Links
-* **Repositório GitHub:** [Inserir Link Aqui]
 * **GitHub Pages:** [Inserir Link Aqui]
 * **Vídeo de Apresentação:** [Inserir Link Aqui]
 
