@@ -80,4 +80,4 @@ O projeto é estático (Front-End puro), não necessitando de instalação de de
 
 ---
 
-> Desenvolvido por [Nomes dos Integrantes] - 2024/2025
+> Desenvolvido por Eduardo da Silva Mendes Carlos - 2025
