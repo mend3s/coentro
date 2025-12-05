@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cilantro - Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Cilantro.png">
+</head>
+<body>
+
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo-container">
+                <img src="Cilantro.png" alt="Logo Cilantro" class="logo-img">
+            </div>
+            <ul>
+                <li><a href="index.html">🏠 Início</a></li>
+                <li><a href="cadastro.html">📝 Cadastro</a></li>
+                <li class="active"><a href="admin.html">⚙️ Admin</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <header>
+                <h1>Painel Administrativo</h1>
+                <p>Gestão de Usuários do Sistema</p>
+            </header>
+
+            <section>
+                <h2>Novo Usuário (LocalStorage)</h2>
+                
+                <div class="form-container" style="background: var(--bg-panel); padding: 25px; border-radius: 12px; border-left: 4px solid var(--primary-green);">
+                    <label for="admin-nome">Nome do Usuário:</label>
+                    <input type="text" id="admin-nome" placeholder="Digite o nome completo">
+
+                    <label for="admin-email">E-mail:</label>
+                    <input type="email" id="admin-email" placeholder="usuario@cilantro.com">
+
+                    <div style="display: flex; gap: 10px;">
+                        <button id="btn-cadastrar">CADASTRAR</button>
+                        <button id="btn-limpar" class="btn-secondary">Limpar</button>
+                    </div>
+                </div>
+            </section>
+
+            <section style="margin-top: 40px;">
+                <h2>Usuários Cadastrados</h2>
+                
+                <div class="admin-controls">
+                    <input type="text" id="pesquisa" placeholder="🔍 Pesquisar por nome ou e-mail...">
+                    <button id="btn-excluir-todos" class="btn-danger" style="width: auto;">Excluir Todos</button>
+                </div>
+
+                <ul id="lista-usuarios">
+                    </ul>
+            </section>
+
+            <footer>
+                <p>Restaurante Cilantro &copy; 2024</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

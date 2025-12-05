@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cilantro - Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Cilantro.png">
+</head>
+<body>
+
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo-container">
+                <img src="Cilantro.png" alt="Logo Cilantro" class="logo-img">
+            </div>
+            <ul>
+                <li><a href="index.html">🏠 Início</a></li>
+                <li class="active"><a href="cadastro.html">📝 Cadastro</a></li>
+                <li><a href="admin.html">⚙️ Admin</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <header>
+                <h1>Cilantro RH</h1>
+                <p>Junte-se à nossa equipe</p>
+            </header>
+
+            <section>
+                <h2>Ficha de Admissão</h2>
+                
+                <form action="index.html" method="get">
+                    
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+
+                    <label for="email">E-mail Corporativo:</label>
+                    <input type="email" id="email" name="email" required placeholder="exemplo@cilantro.com">
+
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00">
+
+                    <label for="cargo">Cargo Pretendido:</label>
+                    <input type="text" id="cargo" name="cargo" required placeholder="Ex: Garçom, Cozinheiro">
+
+                    <label for="senha">Defina uma Senha:</label>
+                    <input type="password" id="senha" name="senha" required>
+
+                    <button type="submit">FINALIZAR CADASTRO</button>
+                </form>
+            </section>
+
+            <footer>
+                <p>Restaurante Cilantro &copy; 2024</p>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>

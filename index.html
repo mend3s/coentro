@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cilantro - Gestão de Restaurante</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Cilantro.png"> 
+</head>
+<body>
+
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo-container">
+                <img src="Cilantro.png" alt="Cilantro Logo" class="logo-img">
+            </div>
+            <ul>
+                <li onclick="mostrarTela('dashboard')" class="active">📊 Dashboard</li>
+                <li onclick="mostrarTela('mesas')">🍽️ Salão & Mesas</li>
+                <li onclick="mostrarTela('estoque')">📦 Estoque & Menu</li>
+                <li onclick="mostrarTela('pedidos')">🔥 Cozinha</li>
+                
+                <hr style="border-color: #333; margin: 15px 0;">
+                
+                <li><a href="admin.html">⚙️ Admin (Proj. 2)</a></li> 
+                <li><a href="cadastro.html">👤 Novo Funcionário</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            
+            <section id="dashboard" class="screen">
+                <header>
+                    <h1>Visão Geral</h1>
+                    <p>Resumo financeiro e operacional do restaurante Cilantro.</p>
+                </header>
+                
+                <div class="cards-container">
+                    <div class="card">
+                        <h3>Vendas Hoje</h3>
+                        <p id="total-vendas">R$ 0,00</p>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" width="40" style="margin-top:15px; opacity:0.7">
+                    </div>
+                    <div class="card">
+                        <h3>Despesas Fixas</h3>
+                        <p id="total-despesas">R$ 1500,00</p>
+                    </div>
+                    <div class="card destaque">
+                        <h3>Saldo Caixa</h3>
+                        <p id="saldo-caixa">R$ -1500,00</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <h2>Status do Sistema</h2>
+                    <p>O sistema está operando em modo local.</p>
+                    <ul style="margin-left: 20px; color: #A0A0A0; margin-top: 10px;">
+                        <li>Conexão com LocalStorage: <strong>Ativa</strong></li>
+                        <li>Módulo de Cozinha: <strong>Online</strong></li>
+                        <li>Versão: <strong>1.0.4 (Final)</strong></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="mesas" class="screen hidden">
+                <header>
+                    <h1>Gestão de Mesas</h1>
+                    <p>Clique na mesa para abrir comanda ou fechar conta.</p>
+                </header>
+                <div class="mesas-grid" id="grid-mesas">
+                    </div>
+            </section>
+
+            <section id="estoque" class="screen hidden">
+                <header>
+                    <h1>Estoque & Cardápio</h1>
+                    <p>Controle de ingredientes baseados no menu oficial.</p>
+                </header>
+                
+                <div style="background: var(--bg-panel); padding: 20px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid var(--primary-green);">
+                    <h3 style="margin-bottom: 15px;">Adicionar Item ao Menu</h3>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <input type="text" id="novo-prato" placeholder="Nome do Prato (ex: Kafta do Sol)" style="flex: 2;">
+                        <input type="number" id="novo-preco" placeholder="Preço (R$)" style="flex: 1;">
+                        <button onclick="adicionarItemEstoque()" style="flex: 1; margin-top: 8px;">+ Adicionar</button>
+                    </div>
+                </div>
+
+                <div class="estoque-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item / Prato</th>
+                                <th>Preço Unit.</th>
+                                <th>Qtd. Disp.</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-estoque">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="pedidos" class="screen hidden">
+                <header>
+                    <h1>Fila de Produção</h1>
+                    <p>Pedidos enviados em tempo real para a cozinha.</p>
+                </header>
+                <div id="lista-pedidos-cozinha" style="display: flex; flex-direction: column; gap: 10px;">
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-comanda" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="fecharModal()">&times;</span>
+            <h2 id="modal-titulo">Mesa X</h2>
+            
+            <label>Selecione o Item:</label>
+            <select id="select-produto"></select>
+            
+            <button onclick="adicionarPedidoMesa()">+ Lançar Pedido</button>
+            
+            <h3 style="margin-top: 20px; border-bottom: 1px solid #333; padding-bottom: 5px;">Consumo:</h3>
+            <ul id="lista-itens-comanda"></ul>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <p style="font-size: 1.2rem;">Total: <strong id="total-mesa" style="color: var(--success);">R$ 0,00</strong></p>
+            </div>
+            
+            <button class="btn-danger" onclick="fecharConta()">💰 Fechar Conta & Liberar Mesa</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desenvolvido por Equipe Cilantro &copy; 2024 - Projeto Integrador UTFPR</p>
+        <p style="margin-top: 5px;">
+            <a href="https://github.com/mend3s/coentro">GitHub</a> | 
+            <a href="#">Documentação</a> | 
+            <a href="#">Suporte</a>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
